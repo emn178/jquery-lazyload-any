@@ -1,5 +1,5 @@
 # jQuery-lazyload-any
-This is a jQuery plugin provides a lazyload function for everything.
+This is a jQuery plugin provides a lazyload function for images, iframe or anything.
 
 ## Demo
 [Images](http://emn178.github.io/jquery-lazyload-any/demo/images/)
@@ -18,8 +18,14 @@ HTML
 ```
 JavaScript
 ```JavaScript
-$('#you-want-lazyload').lazyload();
+$('#you-want-lazyload').lazyload(options);
 ```
+
+### Options
+#### *threshold: Number (default: `0`)*
+
+Sets the pixels to load earlier. Setting threshold to 200 causes image to load 200 pixels before it appears on viewport. It should be greater or equal zero.
+
 ## Example
 HTML
 ```HTML
@@ -32,6 +38,7 @@ HTML
 JavaScript
 ```JavaScript
 $('.lazyload').lazyload();
+$('.lazyload').lazyload({threshold: 200});
 ```
 
 ## License

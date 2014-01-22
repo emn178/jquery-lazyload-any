@@ -6,10 +6,10 @@
 }
 
 .wide {
-  width: 3000px;
+  width: 200%;
 }
 
 .padding {
-  width: 2000px;
+  width: 80%;
   display: inline-block;
 }

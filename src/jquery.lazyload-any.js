@@ -1,5 +1,5 @@
 /*
- * jQuery-lazyload-any v0.1.0
+ * jQuery-lazyload-any v0.1.1
  * https://github.com/emn178/jquery-lazyload-any
  *
  * Copyright 2014, emn178@gmail.com
@@ -35,6 +35,9 @@
 
   var Lazyloader = function(element, options) {
     this.options = options || {};
+    this.options.threshold = options.threshold || 0;
+    if(this.options.threshold < 0)
+      this.options.threshold = 0;
     this.element = $(element);
     this.resizeHandler = this.calculate.bind(this);
     this.scrollHandler = this.test.bind(this);
@@ -43,7 +46,7 @@
   };
 
   Lazyloader.prototype.test = function() {
-    if(!this.inScreen())
+    if(!this.satisfied())
       return;
     this.show();
   };
@@ -52,10 +55,13 @@
     this.test();
   };
 
-  Lazyloader.prototype.inScreen = function() {
+  Lazyloader.prototype.satisfied = function() {
     var rect = this.element[0].getBoundingClientRect();
-    return (rect.top >= 0 && rect.top <= screenHeight || rect.bottom >= 0 && rect.bottom <= screenHeight) &&
-      (rect.left >= 0 && rect.left <= screenWidth || rect.right >= 0 && rect.right <= screenWidth);
+    var x1 = y1 = -this.options.threshold;
+    var y2 = screenHeight - y1;
+    var x2 = screenWidth - x1;
+    return (rect.top >= y1 && rect.top <= y2 || rect.bottom >= y1 && rect.bottom <= y2) &&
+      (rect.left >= x1 && rect.left <= x2 || rect.right >= x1 && rect.right <= x2);
   };
 
   Lazyloader.prototype.show = function() {
