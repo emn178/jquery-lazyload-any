@@ -54,7 +54,8 @@
 
   Lazyloader.prototype.inScreen = function() {
     var rect = this.element[0].getBoundingClientRect();
-    return rect.top >= 0 && rect.top <= screenHeight || rect.bottom >= 0 && rect.bottom <= screenHeight;
+    return (rect.top >= 0 && rect.top <= screenHeight || rect.bottom >= 0 && rect.bottom <= screenHeight) &&
+      (rect.left >= 0 && rect.left <= screenWidth || rect.right >= 0 && rect.right <= screenWidth);
   };
 
   Lazyloader.prototype.show = function() {
@@ -67,15 +68,18 @@
   };
 
   $.fn.lazyload = function(options) {
+    var opts = {};
+    $.extend(opts, options);
     this.each(function() {
-      new Lazyloader(this, options).test();
+      new Lazyloader(this, opts).test();
     });
   };
 
-  var screenHeight;
+  var screenHeight, screenWidth;
   function resize()
   {
     screenHeight = window.innerHeight || document.documentElement.clientHeight;
+    screenWidth = window.innerWidth || document.documentElement.clientWidth;
   }
   resize();
 

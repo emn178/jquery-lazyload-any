@@ -2,4 +2,14 @@
   width: 100px;
   height: 100px;
   background-color: black;
+  display: inline-block;
+}
+
+.wide {
+  width: 3000px;
+}
+
+.padding {
+  width: 2000px;
+  display: inline-block;
 }
