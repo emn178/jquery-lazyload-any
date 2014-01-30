@@ -1,3 +1,7 @@
+# v0.1.2 / 2014-01-28
+
+* Add load callback.
+
 # v0.1.1 / 2014-01-22
 
 * Add x-axis detection.

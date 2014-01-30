@@ -1,5 +1,5 @@
 /*
- * jQuery-lazyload-any v0.1.1
+ * jQuery-lazyload-any v0.1.2
  * https://github.com/emn178/jquery-lazyload-any
  *
  * Copyright 2014, emn178@gmail.com
@@ -34,25 +34,21 @@
   }
 
   var Lazyloader = function(element, options) {
-    this.options = options || {};
-    this.options.threshold = options.threshold || 0;
-    if(this.options.threshold < 0)
-      this.options.threshold = 0;
+    options = options || {};
+    options.threshold = options.threshold || 0;
+    if(options.threshold < 0)
+      options.threshold = 0;
+    this.options = options;
     this.element = $(element);
-    this.resizeHandler = this.calculate.bind(this);
-    this.scrollHandler = this.test.bind(this);
-    $(window).bind('resize', this.resizeHandler);
-    $(window).bind('scroll', this.scrollHandler);
+    this.handler = this.test.bind(this);
+    $(window).bind('resize', this.handler);
+    $(window).bind('scroll', this.handler);
   };
 
   Lazyloader.prototype.test = function() {
     if(!this.satisfied())
       return;
     this.show();
-  };
-
-  Lazyloader.prototype.calculate = function() {
-    this.test();
   };
 
   Lazyloader.prototype.satisfied = function() {
@@ -68,9 +64,12 @@
     var comment = this.element.contents().filter(function() {
       return this.nodeType === 8;
     }).get(0);
-    this.element.replaceWith(comment && comment.data);
-    $(window).unbind('resize', this.resizeHandler);
-    $(window).unbind('scroll', this.scrollHandler);
+    var element = $(comment && comment.data);
+    this.element.replaceWith(element);
+    $(window).unbind('resize', this.handler);
+    $(window).unbind('scroll', this.handler);
+    if($.isFunction(this.options.load))
+      this.options.load.call(element, element);
   };
 
   $.fn.lazyload = function(options) {

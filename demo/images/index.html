@@ -138,7 +138,13 @@
     © 2014 jQuery-lazyload-any Demo and content from Wikipedia
   </div>
   <script>
-    $('.lazyload').lazyload();
+    function load(img)
+    {
+      img.fadeOut(0, function() {
+        img.fadeIn(1000);
+      });
+    }
+    $('.lazyload').lazyload({load: load});
   </script>
 </body>
 </html>
