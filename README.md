@@ -2,7 +2,7 @@
 This is a jQuery plugin provides a lazyload function for images, iframe or anything.
 
 ## Download
-[Compress](https://raw.github.com/emn178/jquery-lazyload-any/master/build/jquery.lazyload-any.min.js)
+[Compress](https://raw.github.com/emn178/jquery-lazyload-any/master/build/jquery.lazyload-any.min.js)  
 [Uncompress](https://raw.github.com/emn178/jquery-lazyload-any/master/src/jquery.lazyload-any.js)
 
 ## Demo
