@@ -36,6 +36,10 @@ Sets the callback function when the load event is firing.
 
 `element`: The content in lazyload tag will be returned as a jQuery object.
 
+#### *trigger: `String` (default: `"appear"`)*
+
+Sets events to trigger lazyload. Default is customized event `appear`, it will trigger when element appear in screen. You could set other events including each one separated by a space, ex: `mousedown touchstart`.
+
 ## Example
 HTML
 ```HTML
@@ -54,7 +58,11 @@ $('.lazyload').lazyload({
 
   // Sets the callback function when the load event is firing.
   // element: The content in lazyload tag will be returned as a jQuery object.
-  load: function(element) {}
+  load: function(element) {},
+
+  // Sets events to trigger lazyload. Default is customized event `appear`, it will trigger when
+  // element appear in screen. You could set other events including each one separated by a space.
+  trigger: "appear"
 });
 ```
 

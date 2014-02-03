@@ -1,3 +1,7 @@
+# v0.1.3 / 2014-02-03
+
+* Add trigger option.
+
 # v0.1.2 / 2014-01-28
 
 * Add load callback.
