@@ -1,3 +1,7 @@
+# v0.1.4 / 2014-02-04
+
+* Rewrite to avoid event listener lost.
+
 # v0.1.3 / 2014-02-03
 
 * Add trigger option.
