@@ -6,8 +6,8 @@ A jQuery plugin provides a lazyload function for images, iframe or anything.
 [Uncompress](https://raw.github.com/emn178/jquery-lazyload-any/master/src/jquery.lazyload-any.js)
 
 ## Demo
-[Images](http://emn178.github.io/jquery-lazyload-any/demo/images/)  
-[Youtube](http://emn178.github.io/jquery-lazyload-any/demo/youtube/)
+[Images](http://emn178.github.io/jquery-lazyload-any/samples/images/)  
+[Youtube](http://emn178.github.io/jquery-lazyload-any/samples/youtube/)
 
 ## Browser Support
 jQuery-lazyload-any currently supports IE7+, Chrome, Firefox, Safari and Opera.
