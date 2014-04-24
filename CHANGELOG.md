@@ -1,3 +1,7 @@
+# v0.1.5 / 2014-04-24
+
+* Support older version jQuery(test 1.6.4).
+
 # v0.1.4 / 2014-02-04
 
 * Rewrite to avoid event listener lost.

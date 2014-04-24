@@ -1,5 +1,5 @@
 /*
- * jQuery-lazyload-any v0.1.4
+ * jQuery-lazyload-any v0.1.5
  * https://github.com/emn178/jquery-lazyload-any
  *
  * Copyright 2014, emn178@gmail.com
@@ -9,7 +9,7 @@
  */
 ;(function($, window, document, undefined) {
   $.expr[':']['jquery-lazyload-any-appear'] = function(element) {
-    return $(element).data('jquery-lazyload-any-appear');
+    return !!$(element).data('jquery-lazyload-any-appear');
   };
 
   function test() 
