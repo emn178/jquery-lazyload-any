@@ -41,6 +41,9 @@ Sets the callback function when the load event is firing.
 
 Sets events to trigger lazyload. Default is customized event `appear`, it will trigger when element appear in screen. You could set other events including each one separated by a space, ex: `mousedown touchstart`.
 
+### Notice
+You should initialize after the element add to page. Or it can't detect whether it's in screen. If you do that, you still can use `$(window).trigger('scroll')` to force detection.
+
 ## Example
 HTML
 ```HTML

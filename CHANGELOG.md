@@ -1,3 +1,7 @@
+# v0.1.6 / 2014-04-29
+
+* Add detection when initializing.
+
 # v0.1.5 / 2014-04-24
 
 * Support older version jQuery(test 1.6.4).

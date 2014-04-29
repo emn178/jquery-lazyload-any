@@ -1,5 +1,5 @@
 /*
- * jQuery-lazyload-any v0.1.5
+ * jQuery-lazyload-any v0.1.6
  * https://github.com/emn178/jquery-lazyload-any
  *
  * Copyright 2014, emn178@gmail.com
@@ -8,21 +8,26 @@
  * http://www.opensource.org/licenses/MIT
  */
 ;(function($, window, document, undefined) {
-  $.expr[':']['jquery-lazyload-any-appear'] = function(element) {
-    return !!$(element).data('jquery-lazyload-any-appear');
+  var KEY = 'jquery-lazyload-any';
+  var EVENT = 'appear';
+  var SELECTOR_KEY = KEY + '-' + EVENT;
+  var SELECTOR = ':' + SELECTOR_KEY;
+
+  $.expr[':'][SELECTOR_KEY] = function(element) {
+    return !!$(element).data(SELECTOR_KEY);
   };
 
   function test() 
   {
     var element = $(this);
-    if(visible(this))
-      element.trigger('appear');
+    if(element.is(':visible') && visible(element))
+      element.trigger(EVENT);
   }
 
   function visible(element) 
   {
-    var rect = element.getBoundingClientRect();
-    var x1 = y1 = -$(element).data('jquery-lazyload-any').threshold;
+    var rect = element[0].getBoundingClientRect();
+    var x1 = y1 = -element.data(KEY).threshold;
     var y2 = screenHeight - y1;
     var x2 = screenWidth - x1;
     return (rect.top >= y1 && rect.top <= y2 || rect.bottom >= y1 && rect.bottom <= y2) &&
@@ -39,14 +44,14 @@
 
   function scroll()
   {
-    $(':jquery-lazyload-any-appear').each(test);
+    $(SELECTOR).each(test);
   }
 
   function show() 
   {
     var element = $(this);
-    var options = element.data('jquery-lazyload-any');
-    element.unbind(options.trigger);
+    var options = element.data(KEY);
+    element.off(options.trigger);
     var comment = element.contents().filter(function() {
       return this.nodeType === 8;
     }).get(0);
@@ -60,18 +65,19 @@
   $.fn.lazyload = function(options) {
     var opts = {
       threshold: 0,
-      trigger: 'appear'
+      trigger: EVENT
     };
     $.extend(opts, options);
     var trigger = opts.trigger.split(' ');
-    this.data('jquery-lazyload-any-appear', $.inArray('appear', trigger) != -1);
-    this.data('jquery-lazyload-any', opts);
-    this.bind(opts.trigger, show);
+    this.data(SELECTOR_KEY, $.inArray(EVENT, trigger) != -1);
+    this.data(KEY, opts);
+    this.on(opts.trigger, show);
+    this.each(test);
   };
 
   $(document).ready(function() {
-    $(window).bind('resize', resize);
-    $(window).bind('scroll', scroll);
+    $(window).on('resize', resize);
+    $(window).on('scroll', scroll);
     resize();
   });
 })(jQuery, window, document);
