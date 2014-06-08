@@ -15,7 +15,7 @@ jQuery-lazyload-any currently supports IE7+, Chrome, Firefox, Safari and Opera.
 ## Usage
 HTML
 ```HTML
-<div id="#you-want-lazyload">
+<div id="you-want-lazyload">
   <!--
     Anything you want to lazyload
   -->
@@ -47,7 +47,7 @@ You should initialize after the element add to page. Or it can't detect whether 
 ## Example
 HTML
 ```HTML
-<div class=".lazyload">
+<div class="lazyload">
   <!--
     <img src="image.png" />
   -->
