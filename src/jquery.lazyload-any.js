@@ -55,7 +55,7 @@
     var comment = element.contents().filter(function() {
       return this.nodeType === 8;
     }).get(0);
-    var newElement = $(comment && comment.data);
+    var newElement = $(comment && comment.data.trim());
     element.replaceWith(newElement);
 
     if($.isFunction(options.load))
