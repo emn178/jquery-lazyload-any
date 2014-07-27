@@ -1,6 +1,10 @@
+# v0.1.8 / 2014-07-27
+
+* Support for jquery 1.6.4
+
 # v0.1.7 / 2014-07-01
 
-* Fixed jquery 1.9.1 bug
+* Support for jquery 1.9.1
 
 # v0.1.6 / 2014-04-29
 
