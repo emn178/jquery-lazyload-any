@@ -1,3 +1,7 @@
+# v0.1.7 / 2014-07-01
+
+* Fixed jquery 1.9.1 bug
+
 # v0.1.6 / 2014-04-29
 
 * Add detection when initializing.

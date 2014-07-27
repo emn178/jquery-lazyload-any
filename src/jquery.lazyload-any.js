@@ -1,5 +1,5 @@
 /*
- * jQuery-lazyload-any v0.1.6
+ * jQuery-lazyload-any v0.1.7
  * https://github.com/emn178/jquery-lazyload-any
  *
  * Copyright 2014, emn178@gmail.com
