@@ -90,3 +90,12 @@ body, html, h1, h2 {
   height: 381px;
   margin: 10px;
 }
+
+#code-block {
+  margin: 10px auto;
+  width: 80%;
+}
+
+#code-block h3 {
+  text-align: center;
+}

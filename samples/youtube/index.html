@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="../../src/jquery.lazyload-any.js"></script>
-  <script src="app.js"></script>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -27,11 +26,40 @@
   <div id="body">
     <div id="description">
       <p>
-        Images preview will be loaded when they are in the screen. Youtube will be loaded when click.
+        Images preview will be loaded when they show in the screen. Youtube will be loaded when click.
       </p>
       <p>
         Scroll down and click to see the effect.
       </p>
+    </div>
+    <div id="code-block">
+      <h3>HTML</h3>
+      <pre class="brush: html">
+        &lt;div class=&quot;lazyload-youtube&quot; &gt;
+          &lt;div class=&quot;lazyload-thumbnail&quot; &gt;
+          &lt;!--
+          &lt;img src=&quot;http://img.youtube.com/vi/XRr-KUV8-eE/0.jpg&quot; width=&quot;560&quot; height=&quot;315&quot; /&gt;
+          &lt;span class=&quot;play&quot;&gt;&lt;/span&gt;
+          --&gt;
+          &lt;/div&gt;
+          &lt;!--
+          &lt;div class=&quot;lazyload-youtube&quot; &gt;
+            &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;//www.youtube.com/embed/XRr-KUV8-eE?autoplay=1&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+          &lt;/div&gt;
+          --&gt;
+        &lt;/div&gt;
+      </pre>
+      <h3>JavaScript</h3>
+      <pre class="brush: js">
+        function load(img)
+        {
+          img.fadeOut(0, function() {
+            img.fadeIn(1000);
+          });
+        }
+        $('.lazyload-thumbnail').lazyload({load: load});
+        $('.lazyload-youtube').lazyload({trigger: 'click'});
+      </pre>
     </div>
     <div class="sections">
       <div class="section">
@@ -214,6 +242,14 @@
     }
     $('.lazyload-thumbnail').lazyload({load: load});
     $('.lazyload-youtube').lazyload({trigger: 'click'});
+  </script>
+  <link href="http://alexgorbatchev.com/pub/sh/current/styles/shCore.css" rel="stylesheet">
+  <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet">
+  <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js"></script>
+  <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJScript.js"></script>
+  <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js"></script>
+  <script>
+    SyntaxHighlighter.all();
   </script>
 </body>
 </html>

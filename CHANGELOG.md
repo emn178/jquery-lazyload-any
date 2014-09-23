@@ -1,3 +1,7 @@
+# v0.1.9 / 2014-09-23
+
+* Bind resize and scroll events only on demand.
+
 # v0.1.8 / 2014-07-27
 
 * Support for jquery 1.6.4

@@ -64,3 +64,12 @@ body, html, h1, h2 {
   opacity: 1;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=100);
 }
+
+#code-block {
+  margin: 10px auto;
+  width: 80%;
+}
+
+#code-block h3 {
+  text-align: center;
+}

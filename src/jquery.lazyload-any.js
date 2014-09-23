@@ -1,5 +1,5 @@
 /*
- * jQuery-lazyload-any v0.1.8
+ * jQuery-lazyload-any v0.1.9
  * https://github.com/emn178/jquery-lazyload-any
  *
  * Copyright 2014, emn178@gmail.com
@@ -12,6 +12,7 @@
   var EVENT = 'appear';
   var SELECTOR_KEY = KEY + '-' + EVENT;
   var SELECTOR = ':' + SELECTOR_KEY;
+  var screenHeight, screenWidth, init = false;
 
   $.expr[':'][SELECTOR_KEY] = function(element) {
     return !!$(element).data(SELECTOR_KEY);
@@ -34,7 +35,6 @@
       (rect.left >= x1 && rect.left <= x2 || rect.right >= x1 && rect.right <= x2);
   }
 
-  var screenHeight, screenWidth;
   function resize()
   {
     screenHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -73,11 +73,14 @@
     this.data(KEY, opts);
     this.bind(opts.trigger, show);
     this.each(test);
-  };
 
-  $(document).ready(function() {
-    $(window).bind('resize', resize);
-    $(window).bind('scroll', scroll);
-    resize();
-  });
+    if(!init) {
+      init = true;
+      $(document).ready(function() {
+        $(window).bind('resize', resize);
+        $(window).bind('scroll', scroll);
+        resize();
+      });
+    }
+  };
 })(jQuery, window, document);
