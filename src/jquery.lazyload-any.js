@@ -12,11 +12,18 @@
   var EVENT = 'appear';
   var SELECTOR_KEY = KEY + '-' + EVENT;
   var SELECTOR = ':' + SELECTOR_KEY;
+  var SCROLLER_KEY = KEY + '-scroller';
   var CONTAINER_KEY = KEY + '-container';
+  var CONTAINER_SELECTOR = ':' + CONTAINER_KEY;
   var screenHeight, screenWidth, init = false;
+  var interval = 50, timer, containers = $();
 
   $.expr[':'][SELECTOR_KEY] = function(element) {
     return !!$(element).data(SELECTOR_KEY);
+  };
+
+  $.expr[':'][CONTAINER_KEY] = function(element) {
+    return !!$(element).data(CONTAINER_KEY);
   };
 
   function test() {
@@ -62,8 +69,17 @@
   function updateContainer() {
     var element = $(this);
     if(element.find(SELECTOR).length == 0) {
+      element.removeData(SCROLLER_KEY);
       element.removeData(CONTAINER_KEY);
       element.unbind('scroll', scroll).unbind(EVENT, updateContainer);
+    }
+  }
+
+  function checkDisplay() {
+    containers.find(SELECTOR).each(test);
+    containers = containers.filter(CONTAINER_SELECTOR);
+    if(containers.length == 0) {
+      timer = clearInterval(timer);
     }
   }
 
@@ -80,13 +96,28 @@
 
     this.parents().each(function() {
       var element = $(this);
-      if(element.data(CONTAINER_KEY)) {
-        return;
+      if(!element.data(SCROLLER_KEY)) {
+        var overflow = element.css('overflow');
+        if(overflow == 'scroll' || overflow == 'auto') {
+          element.data(SCROLLER_KEY, 1);
+          element.bind('scroll', scroll);
+          if(!element.data(CONTAINER_KEY)) {
+            element.bind(EVENT, updateContainer);
+          }
+        }
       }
-      var overflow = element.css('overflow');
-      if(overflow == 'scroll' || overflow == 'auto') {
-        element.data(CONTAINER_KEY, 1);
-        element.bind('scroll', scroll).bind(EVENT, updateContainer);
+      if(!element.data(CONTAINER_KEY)) {
+        var display = element.css('display');
+        if(display == 'none') {
+          element.data(CONTAINER_KEY, 1);
+          if(!element.data(SCROLLER_KEY)) {
+            element.bind(EVENT, updateContainer);
+          }
+          containers = containers.add(element);
+          if(interval && !timer) {
+            timer = setInterval(checkDisplay, interval);
+          }
+        }
       }
     });
 
@@ -98,5 +129,19 @@
       });
     }
     return this;
+  };
+
+  $.lazyload = {
+    check: scroll,
+    setInterval: function(v) {
+      if(v == interval || !$.isNumeric(v) || v < 0) {
+        return;
+      }
+      interval = v;
+      timer = clearInterval(timer);
+      if(interval > 0) {
+        timer = setInterval(checkDisplay, interval);
+      }
+    }
   };
 })(jQuery, window, document);

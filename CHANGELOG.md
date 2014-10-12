@@ -1,3 +1,8 @@
+# v0.2.0 / 2014-10-12
+
+* Support overflow div.
+* Support display none and show.
+
 # v0.1.9 / 2014-09-23
 
 * Bind resize and scroll events only on demand.

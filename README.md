@@ -6,7 +6,7 @@ A jQuery plugin provides a lazyload function for images, iframe or anything.
 [Uncompress](https://raw.github.com/emn178/jquery-lazyload-any/master/src/jquery.lazyload-any.js)
 
 ## Demo
-[Images](http://emn178.github.io/jquery-lazyload-any/samples/images/)  
+[Images](http://emn178.github.io/jquery-lazyload-any/samples/images/)([Overflow and Tabs](http://emn178.github.io/jquery-lazyload-any/samples/overflow/) )  
 [Youtube](http://emn178.github.io/jquery-lazyload-any/samples/youtube/)
 
 ## Browser Support
@@ -41,8 +41,22 @@ Sets the callback function when the load event is firing.
 
 Sets events to trigger lazyload. Default is customized event `appear`, it will trigger when element appear in screen. You could set other events including each one separated by a space, ex: `mousedown touchstart`.
 
+### Methods
+
+#### $.lazyload.check()
+
+Force to trigger detection event.
+
+#### $.lazyload.setInterval(inverval)
+
+Set interval of timer that check container display status.
+
+##### *inverval
+
+Interval of timer. Default is 50. Set 0 to disable timer, and you can use `$.lazyload.check()` to trigger detection manually.
+
 ### Notice
-You should initialize after the element add to page. Or it can't detect whether it's in screen. If you do that, you still can use `$(window).trigger('scroll')` to force detection.
+You should initialize after the element add to page. Or it can't detect whether it's in screen. If you do that, you still can use `$.lazyload.check()` to force detection.
 
 ## Example
 HTML

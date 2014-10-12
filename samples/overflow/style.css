@@ -1,0 +1,106 @@
+body, html, h1, h2 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Slab', serif;
+}
+
+#header {
+  background-color: #2d2d2d;
+  color: white;
+  text-align: center;
+}
+
+#description {
+  margin: 20px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.section-title {
+  background-color: #2d2d2d;
+  color: white;
+  text-align: center;
+}
+
+.section {
+  overflow: auto;
+}
+
+#footer {
+  margin-top: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #777;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.lazyload {
+  background-color: black;
+  display: inline-block;
+}
+
+.batman {
+  float: left;
+  width: 250px;
+  height: 401px;
+  margin: 10px;
+}
+
+.superman {
+  float: right;
+  width: 250px;
+  height: 384px;
+  margin: 10px;
+}
+
+.wonder-woman {
+  float: left;
+  width: 250px;
+  height: 375px;
+  margin: 10px;
+}
+
+.flash {
+  float: right;
+  width: 236px;
+  height: 450px;
+  margin: 10px;
+}
+
+.green-lantern {
+  float: left;
+  width: 250px;
+  height: 336px;
+  margin: 10px;
+}
+
+.martian-manhunter {
+  float: right;
+  width: 162px;
+  height: 448px;
+  margin: 10px;
+}
+
+.aquaman {
+  float: left;
+  width: 250px;
+  height: 381px;
+  margin: 10px;
+}
+
+#code-block {
+  margin: 10px auto;
+  width: 80%;
+}
+
+#code-block h3 {
+  text-align: center;
+}
+
+.sections {
+  height: 450px;
+  overflow: auto;
+}
