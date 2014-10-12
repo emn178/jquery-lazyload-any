@@ -8,6 +8,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <h3>Tab Test</h3>
+  <div class="tabs">
+    <div id="tab1">
+      <button>Switch</button>
+    </div>
+    <div id="tab2" style="display:none">
+      <span class="lazyload">
+        <!--
+        <img src="https://www.google.com.tw/images/srpr/logo11w.png" />
+        -->
+      </span>
+    </div>
+  </div>
+  <h3>Overflow Test</h3>
+  <div class="overflow">
+    <div class="content"></div>
+    <span class="lazyload">
+      <!--
+      <img src="https://www.google.com.tw/images/srpr/logo11w.png" />
+      -->
+    </span>
+    <div class="content"></div>
+    <span class="lazyload">
+      <!--
+      <img src="https://www.google.com.tw/images/srpr/logo11w.png" />
+      -->
+    </span>
+  </div>
+  <h3>Horizontal Test</h3>
   <div class="wide">
     <div class="padding"></div>
     <span class="lazyload">
@@ -16,80 +45,19 @@
       -->
     </span>
   </div>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
+  <h3>Vertical Test</h3>
+  <div class="content"></div>
   <span class="lazyload">
     <!--
     <img src="https://www.google.com.tw/images/srpr/logo11w.png" />
     -->
   </span>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
-  <p>This is conent.</p>
+  <div class="content"></div>
   <script>
+  $('#tab1 button').click(function() {
+    $('#tab1').hide();
+    $('#tab2').show();
+  });
   $('.lazyload').lazyload({threshold: 200});
   </script>
 </body>

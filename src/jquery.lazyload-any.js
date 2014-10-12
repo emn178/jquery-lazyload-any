@@ -1,5 +1,5 @@
 /*
- * jQuery-lazyload-any v0.1.9
+ * jQuery-lazyload-any v0.2.0
  * https://github.com/emn178/jquery-lazyload-any
  *
  * Copyright 2014, emn178@gmail.com
@@ -12,21 +12,21 @@
   var EVENT = 'appear';
   var SELECTOR_KEY = KEY + '-' + EVENT;
   var SELECTOR = ':' + SELECTOR_KEY;
+  var CONTAINER_KEY = KEY + '-container';
   var screenHeight, screenWidth, init = false;
 
   $.expr[':'][SELECTOR_KEY] = function(element) {
     return !!$(element).data(SELECTOR_KEY);
   };
 
-  function test() 
-  {
+  function test() {
     var element = $(this);
-    if(element.is(':visible') && visible(element))
+    if(element.is(':visible') && visible(element)) {
       element.trigger(EVENT);
+    }
   }
 
-  function visible(element) 
-  {
+  function visible(element) {
     var rect = element[0].getBoundingClientRect();
     var x1 = y1 = -element.data(KEY).threshold;
     var y2 = screenHeight - y1;
@@ -35,31 +35,36 @@
       (rect.left >= x1 && rect.left <= x2 || rect.right >= x1 && rect.right <= x2);
   }
 
-  function resize()
-  {
+  function resize() {
     screenHeight = window.innerHeight || document.documentElement.clientHeight;
     screenWidth = window.innerWidth || document.documentElement.clientWidth;
     scroll();
   }
 
-  function scroll()
-  {
+  function scroll() {
     $(SELECTOR).each(test);
   }
 
-  function show() 
-  {
+  function show() {
     var element = $(this);
     var options = element.data(KEY);
-    element.bind(options.trigger);
     var comment = element.contents().filter(function() {
       return this.nodeType === 8;
     }).get(0);
     var newElement = $(comment && comment.data.trim());
     element.replaceWith(newElement);
 
-    if($.isFunction(options.load))
+    if($.isFunction(options.load)) {
       options.load.call(newElement, newElement);
+    }
+  }
+
+  function updateContainer() {
+    var element = $(this);
+    if(element.find(SELECTOR).length == 0) {
+      element.removeData(CONTAINER_KEY);
+      element.unbind('scroll', scroll).unbind(EVENT, updateContainer);
+    }
   }
 
   $.fn.lazyload = function(options) {
@@ -69,18 +74,29 @@
     };
     $.extend(opts, options);
     var trigger = opts.trigger.split(' ');
-    this.data(SELECTOR_KEY, $.inArray(EVENT, trigger) != -1);
-    this.data(KEY, opts);
+    this.data(SELECTOR_KEY, $.inArray(EVENT, trigger) != -1).data(KEY, opts);
     this.bind(opts.trigger, show);
     this.each(test);
+
+    this.parents().each(function() {
+      var element = $(this);
+      if(element.data(CONTAINER_KEY)) {
+        return;
+      }
+      var overflow = element.css('overflow');
+      if(overflow == 'scroll' || overflow == 'auto') {
+        element.data(CONTAINER_KEY, 1);
+        element.bind('scroll', scroll).bind(EVENT, updateContainer);
+      }
+    });
 
     if(!init) {
       init = true;
       $(document).ready(function() {
-        $(window).bind('resize', resize);
-        $(window).bind('scroll', scroll);
+        $(window).bind('resize', resize).bind('scroll', scroll);
         resize();
       });
     }
+    return this;
   };
 })(jQuery, window, document);
