@@ -51,9 +51,9 @@ Force to trigger detection event.
 
 Set interval of timer that check container display status.
 
-##### *inverval
+##### *inverval: `Number` (default: `50`)*
 
-Interval of timer. Default is 50. Set 0 to disable timer, and you can use `$.lazyload.check()` to trigger detection manually.
+Interval of timer. Set 0 to disable timer, and you can use `$.lazyload.check()` to trigger detection manually.
 
 ### Notice
 You should initialize after the element add to page. Or it can't detect whether it's in screen. If you do that, you still can use `$.lazyload.check()` to force detection.
