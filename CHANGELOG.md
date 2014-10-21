@@ -1,3 +1,8 @@
+# v0.2.2 / 2014-10-21
+
+* Enhance performance.
+* Enable event if document is not ready.
+
 # v0.2.1 / 2014-10-21
 
 * Enhance performance.

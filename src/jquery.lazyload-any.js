@@ -1,5 +1,5 @@
 /*
- * jQuery-lazyload-any v0.2.1
+ * jQuery-lazyload-any v0.2.2
  * https://github.com/emn178/jquery-lazyload-any
  *
  * Copyright 2014, emn178@gmail.com
@@ -15,7 +15,7 @@
   var SCROLLER_KEY = KEY + '-scroller';
   var DISPLAY_KEY = KEY + '-display';
   var WATCH_KEY = KEY + '-watch';
-  var screenHeight, screenWidth, init = false;
+  var screenHeight, screenWidth, init = false, observations = $();
 
   $.expr[':'][SELECTOR_KEY] = function(element) {
     return $(element).data(SELECTOR_KEY) !== undefined;
@@ -44,10 +44,11 @@
   }
 
   function detect() {
+    observations = observations.filter(SELECTOR);
     if(this.nodeType == 1) {
       $(this).find(SELECTOR).each(test);
     } else {
-      $(SELECTOR).each(test);
+      observations.each(test);
     }
   }
 
@@ -122,12 +123,15 @@
     this.bind(opts.trigger, show);
     this.each(test);
     this.parents().each(watch);
+    this.each(function() {
+      observations = observations.add(this);
+    });
 
     if(!init) {
       init = true;
+      resize();
       $(document).ready(function() {
         $(window).bind('resize', resize).bind('scroll', detect);
-        resize();
       });
     }
     return this;
