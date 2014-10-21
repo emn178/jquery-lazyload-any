@@ -1,3 +1,8 @@
+# v0.2.1 / 2014-10-21
+
+* Enhance performance.
+* Fixed trim bug in older browsers.
+
 # v0.2.0 / 2014-10-12
 
 * Support overflow div.
