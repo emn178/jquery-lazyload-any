@@ -84,6 +84,12 @@ $('.lazyload').lazyload({
 });
 ```
 
+## Installation
+You can install jquery-lazyload-any by using Bower.
+```
+bower install jquery-lazyload-any
+```
+
 ## License
 The project is released under the [MIT license](http://www.opensource.org/licenses/MIT).
 
