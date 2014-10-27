@@ -1,0 +1,13 @@
+{
+	"name": "jquery-lazyload-any",
+	"version": "0.2.2",
+	"main": ["build/jquery.lazyload-any.min.js"],
+	"ignore": [
+		"**/.*",
+		"samples",
+		"tests"
+	],
+	"dependencies": {
+		"jquery": ">= 1.6"
+	}
+}
