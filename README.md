@@ -56,7 +56,8 @@ Set interval of timer that check container display status.
 Interval of timer. Set 0 to disable timer, and you can use `$.lazyload.check()` to trigger detection manually.
 
 ### Notice
-You should initialize after the element add to page. Or it can't detect whether it's in screen. If you do that, you still can use `$.lazyload.check()` to force detection.
+* You should initialize after the element add to page. Or it can't detect whether it's in screen. If you do that, you still can use `$.lazyload.check()` to force detection.
+* Detection uses jQuery `element.is(':visible')`, it will return false if element's width and height are equal to zero. So you have to make sure the lazyload element with any width or height.
 
 ## Example
 HTML
