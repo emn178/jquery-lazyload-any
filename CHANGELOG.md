@@ -1,3 +1,8 @@
+# v0.2.3 / 2014-10-21
+
+* Add refresh method for element move.
+* Fixed JSHint warnings.
+
 # v0.2.2 / 2014-10-21
 
 * Enhance performance.

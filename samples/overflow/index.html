@@ -34,6 +34,26 @@
         Scroll down to see the effect.
       </p>
     </div>
+    <div id="code-block">
+      <h3>HTML</h3>
+      <pre class="brush: html">
+        &lt;div class=&quot;lazyload batman&quot; &gt;
+          &lt;!--
+          &lt;img src=&quot;images/batman.png&quot; class=&quot;batman&quot; /&gt;
+          --&gt;
+        &lt;/div&gt;
+      </pre>
+      <h3>JavaScript</h3>
+      <pre class="brush: js">
+        function load(img)
+        {
+          img.fadeOut(0, function() {
+            img.fadeIn(1000);
+          });
+        }
+        $('.lazyload').lazyload({load: load});
+      </pre>
+    </div>
     <div id="tabs">
       <ul>
         <li><a href="#tabs-1">Part I</a></li>
@@ -156,7 +176,7 @@
     </div>
   </div>
   <div id="footer">
-    © 2014 jQuery-lazyload-any Demo and content from Wikipedia
+    © 2014-2015 jQuery-lazyload-any Demo and content from Wikipedia
   </div>
   <script>
     function load(img)
@@ -167,6 +187,14 @@
     }
     $( "#tabs" ).tabs();
     $('.lazyload').lazyload({load: load});
+  </script>
+  <link href="http://alexgorbatchev.com/pub/sh/current/styles/shCore.css" rel="stylesheet">
+  <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet">
+  <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js"></script>
+  <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJScript.js"></script>
+  <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js"></script>
+  <script>
+    SyntaxHighlighter.all();
   </script>
 </body>
 </html>

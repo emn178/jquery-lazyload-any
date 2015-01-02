@@ -1,8 +1,8 @@
 /*
- * jQuery-lazyload-any v0.2.2
+ * jQuery-lazyload-any v0.2.3
  * https://github.com/emn178/jquery-lazyload-any
  *
- * Copyright 2014, emn178@gmail.com
+ * Copyright 2014-2015, emn178@gmail.com
  *
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
@@ -30,7 +30,8 @@
 
   function visible(element) {
     var rect = element[0].getBoundingClientRect();
-    var x1 = y1 = -element.data(KEY).threshold;
+    var x1 = -element.data(KEY).threshold;
+    var y1 = x1;
     var y2 = screenHeight - y1;
     var x2 = screenWidth - x1;
     return (rect.top >= y1 && rect.top <= y2 || rect.bottom >= y1 && rect.bottom <= y2) &&
@@ -106,10 +107,21 @@
 
   function clearWatch() {
     var element = $(this);
-    if(element.find(SELECTOR).length == 0) {
+    if(element.find(SELECTOR).length === 0) {
       element.removeData(SCROLLER_KEY).removeData(DISPLAY_KEY).removeData(WATCH_KEY);
       element.unbind('scroll', detect).unbind(EVENT, clearWatch)._unbindShow(detect);
     }
+  }
+
+  function refresh(selector) {
+    var elements = selector === undefined ? observations : $(selector);
+    elements.each(function() {
+      var element = $(this);
+      if(!element.is(SELECTOR)) {
+        return;
+      }
+      element.parents().each(watch);
+    });
   }
 
   $.fn.lazyload = function(options) {
@@ -138,7 +150,8 @@
   };
 
   $.lazyload = {
-    check: detect
+    check: detect,
+    refresh: refresh
   };
 
   // SHOW EVENT
@@ -152,14 +165,6 @@
       return $(element).data(SELECTOR_KEY) !== undefined;
     };
 
-    function detect() {
-      observations = observations.filter(SELECTOR);
-      observations.each(test);
-      if(observations.length == 0) {
-        timer = clearInterval(timer);
-      }
-    }
-
     function test() {
       var element = $(this);
       var status = element.css('display') != 'none';
@@ -168,6 +173,14 @@
         if(status) {
           element.trigger(EVENT);
         }
+      }
+    }
+
+    function detect() {
+      observations = observations.filter(SELECTOR);
+      observations.each(test);
+      if(observations.length === 0) {
+        timer = clearInterval(timer);
       }
     }
 
