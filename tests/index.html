@@ -3,12 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
   <script type="text/javascript" src="../src/jquery.lazyload-any.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h3>Tab Test</h3>
+  <h3>Script</h3>
+  <div class="content"></div>
+  <span class="lazyload">
+    <script type="text/lazyload">
+      <img src="https://www.google.com.tw/images/srpr/logo11w.png" />
+    </script>
+  </span>
+  <h3>Attribute</h3>
+  <div class="content"></div>
+  <span class="lazyload" data-lazyload="&lt;img src=&quot;https://www.google.com.tw/images/srpr/logo11w.png&quot; /&gt;">
+  </span>
+  <h3>Text</h3>
+  <div class="content"></div>
+  <span class="lazyload">
+    <!--
+    Test
+    -->
+  </span>
+  <h3>Tab</h3>
   <div class="tabs">
     <div id="tab1">
       <button>Switch</button>
@@ -21,7 +39,7 @@
       </span>
     </div>
   </div>
-  <h3>Overflow Test</h3>
+  <h3>Overflow</h3>
   <div class="overflow">
     <div class="content"></div>
     <span class="lazyload">
@@ -36,7 +54,7 @@
       -->
     </span>
   </div>
-  <h3>Horizontal Test</h3>
+  <h3>Horizontal</h3>
   <div class="wide">
     <div class="padding"></div>
     <span class="lazyload">
@@ -45,7 +63,7 @@
       -->
     </span>
   </div>
-  <h3>Vertical Test</h3>
+  <h3>Vertical</h3>
   <div class="content"></div>
   <span class="lazyload">
     <!--

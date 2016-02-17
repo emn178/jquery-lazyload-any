@@ -1,23 +1,40 @@
 # jQuery-lazyload-any
 A jQuery plugin provides a lazyload function for images, iframe or anything.
 
-## Download
-[Compress](https://raw.github.com/emn178/jquery-lazyload-any/master/build/jquery.lazyload-any.min.js)  
-[Uncompress](https://raw.github.com/emn178/jquery-lazyload-any/master/src/jquery.lazyload-any.js)
-
 ## Demo
 [Images](http://emn178.github.io/jquery-lazyload-any/samples/images/) ([Overflow and Tabs](http://emn178.github.io/jquery-lazyload-any/samples/overflow/))  
 [Youtube](http://emn178.github.io/jquery-lazyload-any/samples/youtube/)
 
-## Browser Support
-jQuery-lazyload-any currently supports IE7+, Chrome, Firefox, Safari and Opera.
+## Download
+[Compress](https://raw.github.com/emn178/jquery-lazyload-any/master/build/jquery.lazyload-any.min.js)  
+[Uncompress](https://raw.github.com/emn178/jquery-lazyload-any/master/src/jquery.lazyload-any.js)
+
+## Installation
+You can install jquery-lazyload-any by using Bower.
+```
+bower install jquery-lazyload-any
+```
 
 ## Usage
-HTML
+HTML  
+*Attribute Style*
+```HTML
+<div id="you-want-lazyload" data-lazyload="&lt;p&gt;Anything you want to lazyload&lt;/p&gt;">
+</div>
+```
+*Script Style*
+```HTML
+<div id="you-want-lazyload">
+  <script type="text/lazyload">
+    <p>Anything you want to lazyload</p>
+  </script>
+</div>
+```
+*Comment Style*
 ```HTML
 <div id="you-want-lazyload">
   <!--
-    Anything you want to lazyload
+    <p>Anything you want to lazyload</p>
   -->
 </div>
 ```
@@ -25,6 +42,7 @@ JavaScript
 ```JavaScript
 $('#you-want-lazyload').lazyload(options);
 ```
+You should choose only one style. When multiple styles set, priority is Attribute > Script > Comment.
 
 ### Options
 #### *threshold: `Number` (default: `0`)*
@@ -93,15 +111,9 @@ $('.lazyload').lazyload({
 });
 ```
 
-## Installation
-You can install jquery-lazyload-any by using Bower.
-```
-bower install jquery-lazyload-any
-```
-
 ## License
 The project is released under the [MIT license](http://www.opensource.org/licenses/MIT).
 
 ## Contact
 The project's website is located at https://github.com/emn178/jquery-lazyload-any  
-Author: emn178@gmail.com
+Author: Yi-Cyuan Chen (emn178@gmail.com)

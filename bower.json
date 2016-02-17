@@ -1,7 +1,7 @@
 {
 	"name": "jquery-lazyload-any",
-	"version": "0.2.3",
-	"main": ["build/jquery.lazyload-any.min.js"],
+	"version": "0.3.0",
+	"main": ["src/jquery.lazyload-any.js"],
 	"ignore": [
 		"samples",
 		"tests"

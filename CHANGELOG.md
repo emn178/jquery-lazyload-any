@@ -1,3 +1,9 @@
+# v0.3.0 / 2016-02-17
+
+* Added data-lazyload attribute to load content.
+* Added script type="text/lazyload" to load content.
+* Supported text content.
+
 # v0.2.3 / 2014-10-21
 
 * Add refresh method for element move.
