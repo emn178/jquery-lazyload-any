@@ -1,5 +1,6 @@
 # jQuery-lazyload-any
-A jQuery plugin provides a lazyload function for images, iframe or anything.
+A jQuery plugin provides a lazyload function for images, iframe or anything.  
+[![NPM](https://nodei.co/npm/jquery-lazyload-any.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/jquery-lazyload-any)
 
 ## Demo
 [Images](http://emn178.github.io/jquery-lazyload-any/samples/images/) ([Overflow and Tabs](http://emn178.github.io/jquery-lazyload-any/samples/overflow/))  
@@ -11,9 +12,12 @@ A jQuery plugin provides a lazyload function for images, iframe or anything.
 
 ## Installation
 You can install jquery-lazyload-any by using Bower.
-```
-bower install jquery-lazyload-any
-```
+
+    bower install jquery-lazyload-any
+
+For node.js, you can use this command to install:
+
+    npm install jquery-lazyload-any
 
 ## Usage
 HTML  
