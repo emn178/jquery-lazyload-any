@@ -2,7 +2,7 @@
   "name": "jquery-lazyload-any",
   "version": "0.3.0",
   "description": "A jQuery plugin provides a lazyload function for images, iframe or anything.",
-  "main": "src/jquery-lazyload-any.js",
+  "main": "src/jquery.lazyload-any.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/emn178/jquery-lazyload-any.git"
