@@ -1,7 +1,7 @@
 /**
  * [jQuery-lazyload-any]{@link https://github.com/emn178/jquery-lazyload-any}
  *
- * @version 0.3.0
+ * @version 0.3.1
  * @author Yi-Cyuan Chen [emn178@gmail.com]
  * @copyright Yi-Cyuan Chen 2014-2016
  * @license MIT
